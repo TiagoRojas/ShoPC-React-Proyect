@@ -1,8 +1,14 @@
-import Navbar from "./Components/Navbar/Nav"
+import Navbar from "./Components/Navbar/Nav";
+import ItemListContainer from "./Components/ItemListContainer/ItemListContainer";
 
 function App() {
+  const title = "Web en mantenimiento. Vuelva más tarde."
   return (
-    <Navbar />
+
+    <>
+      <Navbar />
+      <ItemListContainer greeting={title} />
+    </>
   )
 }
 
