@@ -7,7 +7,7 @@ const ItemCount = ({initial, stock, addCart }) => {
         if(count < stock)setCount(count + 1);
     }
     const subOne = () => {
-        if(count > stock)setCount(count - 1);
+        if(count > initial)setCount(count - 1);
     }
     return(
         <>
