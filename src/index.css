@@ -11,3 +11,21 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+.amountContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.amount{
+  display: inline-block;
+  font-size: 20px;
+  padding: 10px;
+}
+.amountButton{
+  height: 20px;
+}
+.submitButton{
+  margin: 10px;
+}
