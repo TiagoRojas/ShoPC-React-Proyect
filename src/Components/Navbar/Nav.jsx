@@ -1,5 +1,3 @@
-import { padding } from "@mui/system"
-import { eventWrapper } from "@testing-library/user-event/dist/utils"
 import CartWidget from "../Cartwidget/CartIcon"
 
 const Navbar = () =>{
