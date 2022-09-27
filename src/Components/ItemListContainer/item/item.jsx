@@ -1,11 +1,16 @@
+import {Link} from "react-router-dom";
+
 const Item = ({product}) => {
 	return (
 		<>
-			<div key={product.keydiv} id="product-item">
-				<img src={product.img} alt={product.name} id={"product"} />
+			<div id="product-item">
+				<img src={product.image} alt={product.title} id={"product"} />
 				<h3 key={product.id} id={"product-name"}>
-					{product.name}
+					{product.title}
 				</h3>
+				<Link to={`/product/${product.id}`}>
+					<button>Ver Detalles</button>
+				</Link>
 			</div>
 		</>
 	);

@@ -1,44 +1,37 @@
-import { useEffect, useState } from "react";
-import ItemCount from "../ItemCount"
-import backProducts from "../products";
+import {useEffect, useState} from "react";
 import ItemList from "./itemList/itemList";
-const promise = new Promise((res, rej)=>{
-    res(backProducts)
-})
+import {useParams} from "react-router-dom";
+import {API} from "../../API/api";
+
 const ItemListContainer = ({greeting}) => {
-    const [products, setProducts] = useState([])
-    let timeout = undefined 
-    useEffect(() => {
-        clearTimeout(timeout)
-        timeout = setTimeout(() =>{
-            promise
-            .then(data=>{
-                setProducts(data)
-                console.log("productos cargados!")
-            })
-        }, 2000);
-    }, []);
+	const {id} = useParams();
+	const [products, setProducts] = useState([]);
+	useEffect(() => {
+		const url = id ? `${API.category}${id}` : API.list;
+		const getItems = async () => {
+			try {
+				const respuesta = await fetch(url);
+				const data = await respuesta.json();
+				setProducts(data);
+			} catch (err) {
+				console.error(err);
+			}
+		};
+		getItems();
+	}, [id]);
+	return (
+		<>
+			<h1 style={Styles.h1}>{greeting}</h1>
+			<ItemList product={products} />
+		</>
+	);
+};
 
-
-    
-    const addCart = (count) => {
-        console.log(`Se agregan ${count} productos`);
-    }
-    return (
-    <>
-        <a/>
-        <h1 style={Styles.h1}>{greeting}</h1>
-        <ItemCount initial={1} stock={10} addCart={addCart}/>
-        <ItemList product={products}/>
-    </>
-    )
-}
-
-export default ItemListContainer
+export default ItemListContainer;
 
 const Styles = {
-    h1:{
-        textAlign: "center",
-        fontSize: 20
-    }
-}
+	h1: {
+		textAlign: "center",
+		fontSize: 20,
+	},
+};

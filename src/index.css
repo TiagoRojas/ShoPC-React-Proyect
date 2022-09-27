@@ -1,75 +1,82 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+		"Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+		sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+		monospace;
 }
 
-
-.amountContainer{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.amount{
-  display: inline-block;
-  font-size: 20px;
-  padding: 10px;
-}
-.amountButton{
-  height: 20px;
-}
-.submitButton{
-  margin: 10px;
+header nav a {
+	text-transform: capitalize;
 }
 
-#item-container{
-  display: inline-flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: stretch;
-  align-content: stretch;
+.amountContainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
-#product-item{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  height: 300px;
-  width: 400px;
-  background-color: rgb(220, 220, 220);
-  margin: 10px;
-  padding: 10px;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: 0.3s;
+.amount {
+	display: inline-block;
+	font-size: 20px;
+	padding: 10px;
 }
-#product-item:hover{
-  transform: scale(1.05);
-  transition: 0.3s;
+.amountButton {
+	height: 20px;
 }
-img{
-  align-self: center;
-  width: 300px;
-  -webkit-user-drag: none;
-  -khtml-user-drag: none;
-  -moz-user-drag: none;
-  -o-user-drag: none;
+.submitButton {
+	margin: 10px;
 }
-#product-item h3{
-  background-color: #fff;
-  margin: 0;
-  padding: 5px;
-  border-radius: 10px;
-  text-align: center;
-  user-select: none;
-  -moz-user-select: none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
+
+#item-container {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: stretch;
+	align-content: stretch;
+}
+#product-item {
+	display: inline-flex;
+	flex-direction: column;
+	justify-content: space-around;
+	border: 2px solid #000000;
+	margin: 10px;
+	padding: 10px;
+	width: 300px;
+	height: 300px;
+	border-radius: 10px;
+	cursor: pointer;
+	transition: 0.3s;
+}
+#product-item:hover {
+	transform: scale(1.05);
+	transition: 0.3s;
+}
+#product-item img {
+	align-self: center;
+	width: 30%;
+	-webkit-user-drag: none;
+	-khtml-user-drag: none;
+	-moz-user-drag: none;
+	-o-user-drag: none;
+}
+#product-item h3 {
+	background-color: #fff;
+	margin: 0;
+	padding: 5px;
+	border-radius: 10px;
+	text-align: center;
+	user-select: none;
+	-moz-user-select: none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+}
+#product-item a {
+	margin-top: 10px;
+	text-align: center;
 }
