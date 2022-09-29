@@ -1,8 +1,8 @@
 import {useState} from "react";
-
+import {Link} from "react-router-dom";
 const ItemCount = ({initial, stock, addCart}) => {
 	const [count, setCount] = useState(initial);
-
+	const [canAdd, setCanAdd] = useState(true);
 	const addOne = () => {
 		if (count < stock) setCount(count + 1);
 	};
@@ -12,8 +12,9 @@ const ItemCount = ({initial, stock, addCart}) => {
 	const addCartButton = () => {
 		addCart(count);
 		setCount(1);
+		setCanAdd(false);
 	};
-	return (
+	return canAdd ? (
 		<>
 			<div className="amountContainer">
 				<button onClick={subOne} className="amountButton">
@@ -28,6 +29,10 @@ const ItemCount = ({initial, stock, addCart}) => {
 				</button>
 			</div>
 		</>
+	) : (
+		<Link to={"/cart"}>
+			<button>Finalizar compra</button>
+		</Link>
 	);
 };
 

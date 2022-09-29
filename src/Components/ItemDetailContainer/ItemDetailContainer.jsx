@@ -19,7 +19,7 @@ const ItemDetailContainer = () => {
 			}
 		};
 		getItem();
-	}, []);
+	});
 	return (
 		<>
 			<ItemDetail product={productLoaded} />
