@@ -2,8 +2,10 @@ import {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import {ItemDetail} from "./ItemDetail/ItemDetail";
 import {API} from "../../API/api";
+import {CircularProgress} from "@mui/material";
 const ItemDetailContainer = () => {
 	const [productLoaded, setProduct] = useState({});
+	const [Loading, setLoading] = useState(true);
 	const {id} = useParams();
 	useEffect(() => {
 		const url = `${API.product}${id}`;
@@ -12,17 +14,21 @@ const ItemDetailContainer = () => {
 				const resp = await fetch(url);
 				const data = await resp.json();
 				setProduct(data);
-				console.log(data);
 			} catch (error) {
 				console.error(error);
 			} finally {
+				setLoading(false);
 			}
 		};
 		getItem();
 	});
 	return (
 		<>
-			<ItemDetail product={productLoaded} />
+			{Loading ? (
+				<CircularProgress id="loading-icon" />
+			) : (
+				<ItemDetail producto={productLoaded} />
+			)}
 		</>
 	);
 };

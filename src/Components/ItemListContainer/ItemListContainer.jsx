@@ -2,10 +2,12 @@ import {useEffect, useState} from "react";
 import ItemList from "./itemList/itemList";
 import {useParams} from "react-router-dom";
 import {API} from "../../API/api";
+import {CircularProgress} from "@mui/material";
 
 const ItemListContainer = ({greeting}) => {
 	const {id} = useParams();
 	const [products, setProducts] = useState([]);
+	const [Loading, setLoading] = useState(true);
 	useEffect(() => {
 		const url = id ? `${API.category}${id}` : API.list;
 		const getItems = async () => {
@@ -15,6 +17,8 @@ const ItemListContainer = ({greeting}) => {
 				setProducts(data);
 			} catch (err) {
 				console.error(err);
+			} finally {
+				setLoading(false);
 			}
 		};
 		getItems();
@@ -22,7 +26,11 @@ const ItemListContainer = ({greeting}) => {
 	return (
 		<>
 			<h1 style={Styles.h1}>{greeting}</h1>
-			<ItemList product={products} />
+			{Loading ? (
+				<CircularProgress id="loading-icon" />
+			) : (
+				<ItemList product={products} />
+			)}
 		</>
 	);
 };

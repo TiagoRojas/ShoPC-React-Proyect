@@ -16,6 +16,9 @@ header nav a {
 	text-transform: capitalize;
 }
 
+#root {
+	display: grid;
+}
 .amountContainer {
 	display: flex;
 	justify-content: center;
@@ -79,4 +82,9 @@ header nav a {
 #product-item a {
 	margin-top: 10px;
 	text-align: center;
+}
+
+#loading-icon {
+	width: 50%;
+	margin: 0 auto;
 }

@@ -3,15 +3,17 @@ import {Link} from "react-router-dom";
 const ItemCount = ({initial, stock, addCart}) => {
 	const [count, setCount] = useState(initial);
 	const [canAdd, setCanAdd] = useState(true);
+
 	const addOne = () => {
 		if (count < stock) setCount(count + 1);
 	};
+
 	const subOne = () => {
 		if (count > initial) setCount(count - 1);
 	};
+
 	const addCartButton = () => {
 		addCart(count);
-		setCount(1);
 		setCanAdd(false);
 	};
 	return canAdd ? (
@@ -24,7 +26,7 @@ const ItemCount = ({initial, stock, addCart}) => {
 				<button onClick={addOne} className="amountButton">
 					+
 				</button>
-				<button onClick={addCartButton} className="submitButton">
+				<button onClick={() => addCart(count)} className="submitButton">
 					Añadir al carrito
 				</button>
 			</div>

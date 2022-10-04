@@ -1,17 +1,20 @@
+import {useContext} from "react";
 import ItemCount from "../../ItemCount";
-export const ItemDetail = ({product}) => {
+import {Context} from "../../../Context/CartContext";
+export const ItemDetail = ({producto}) => {
+	const {addItem} = useContext(Context);
 	const addCart = (count) => {
-		console.log(`Se agregan ${count} productos`);
+		addItem(producto, count);
 	};
 	return (
 		<>
 			<h2>Product Detail</h2>
 			<div style={Styles.productContainer}>
-				<img src={product.image} alt={product.title} style={Styles.image} />
+				<img src={producto.image} alt={producto.title} style={Styles.image} />
 				<div style={Styles.infoContainer}>
-					<h3>{product.title}</h3>
-					<span>{product.description}</span>
-					<h4>${product.price * 120}</h4>
+					<h3>{producto.title}</h3>
+					<span>{producto.description}</span>
+					<h4>${producto.price * 120}</h4>
 					<ItemCount initial={1} stock={10} addCart={addCart} />
 				</div>
 			</div>

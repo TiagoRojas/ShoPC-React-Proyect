@@ -1,11 +1,26 @@
-import React from "react"
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import {useContext, useEffect, useState} from "react";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import {Context} from "../../Context/CartContext";
 
-const CartWidget = () =>{
-    return(
-        <ShoppingCartIcon fontSize="large" />
-    )
-}
+const CartWidget = () => {
+	const {cart} = useContext(Context);
 
-export default CartWidget
+	const [itemsInCart, setItemsInCart] = useState(0);
 
+	useEffect(() => {
+		if (cart.length) {
+			let totalAmount = 0;
+			cart.forEach((item) => (totalAmount += item.amount));
+			setItemsInCart(totalAmount);
+		}
+	}, [cart]);
+
+	return (
+		<div>
+			{cart.length ? <span>{itemsInCart}</span> : null}
+			<ShoppingCartIcon fontSize="large" />
+		</div>
+	);
+};
+
+export default CartWidget;
