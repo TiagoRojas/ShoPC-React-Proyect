@@ -12,7 +12,7 @@ const CartProvider = ({children}) => {
 		);
 		if (alreadyAdded !== -1) {
 			const newCart = cart.filter((product) => product !== cart[alreadyAdded]);
-			setCart([{product, quantity}, ...newCart]);
+			setCart([...newCart, {product, quantity: quantity + quantity}]);
 		} else {
 			setCart([...cart, {product, quantity}]);
 		}
