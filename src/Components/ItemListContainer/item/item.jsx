@@ -8,6 +8,7 @@ const Item = ({product}) => {
 				<h3 key={product.id} id={"product-name"}>
 					{product.title}
 				</h3>
+				<p>${product.price}</p>
 				<Link to={`/product/${product.id}`}>
 					<button>Ver Detalles</button>
 				</Link>

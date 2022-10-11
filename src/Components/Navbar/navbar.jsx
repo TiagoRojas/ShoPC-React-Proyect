@@ -1,12 +1,13 @@
 import CartWidget from "../Cartwidget/CartIcon";
 import {Nav} from "./nav/Nav";
 import {Link} from "react-router-dom";
+
 const Navbar = () => {
 	const categories = [
-		{id: 0, title: "electronics", route: "/category/electronics"},
-		{id: 1, title: "jewelery", route: "/category/jewelery"},
-		{id: 2, title: "men's clothing", route: "/category/men's clothing"},
-		{id: 3, title: "women's clothing", route: "/category/women's clothing"},
+		{id: 0, title: "Motherboards", route: "/category/motherboards"},
+		{id: 1, title: "Procesadores", route: "/category/procesadores"},
+		{id: 2, title: "Almacenamiento", route: "/category/almacenamiento"},
+		{id: 3, title: "Placas de Video", route: "/category/placas de video"},
 	];
 	return (
 		<header style={styles.header}>

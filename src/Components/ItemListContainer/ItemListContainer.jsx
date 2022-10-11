@@ -1,28 +1,41 @@
 import {useEffect, useState} from "react";
 import ItemList from "./itemList/itemList";
 import {useParams} from "react-router-dom";
-import {API} from "../../API/api";
 import {CircularProgress} from "@mui/material";
+import {db} from "../../Firebase/Firebase";
+import {getDocs, collection, query, where} from "firebase/firestore";
 
 const ItemListContainer = ({greeting}) => {
 	const {id} = useParams();
 	const [products, setProducts] = useState([]);
 	const [Loading, setLoading] = useState(true);
+
 	useEffect(() => {
-		const url = id ? `${API.category}${id}` : API.list;
-		const getItems = async () => {
+		const productsCollection = collection(db, "products");
+
+		const category = id
+			? query(productsCollection, where("category", "==", id))
+			: productsCollection;
+
+		const getProducts = async () => {
 			try {
-				const respuesta = await fetch(url);
-				const data = await respuesta.json();
-				setProducts(data);
-			} catch (err) {
-				console.error(err);
+				const data = await getDocs(category);
+				const productList = data.docs.map((product) => {
+					return {
+						...product.data(),
+						id: product.id,
+					};
+				});
+				setProducts(productList);
+			} catch {
+				console.log("error");
 			} finally {
 				setLoading(false);
 			}
 		};
-		getItems();
+		getProducts();
 	}, [id]);
+
 	return (
 		<>
 			<h1 style={Styles.h1}>{greeting}</h1>

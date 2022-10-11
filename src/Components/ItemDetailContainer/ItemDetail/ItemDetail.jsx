@@ -14,7 +14,7 @@ export const ItemDetail = ({producto}) => {
 				<div style={Styles.infoContainer}>
 					<h3>{producto.title}</h3>
 					<span>{producto.description}</span>
-					<h4>${producto.price * 120}</h4>
+					<h4>${producto.price}</h4>
 					<ItemCount initial={1} stock={10} addCart={addCart} />
 				</div>
 			</div>
