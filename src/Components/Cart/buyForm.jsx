@@ -1,12 +1,19 @@
-import {useState} from "react";
+import {useState, useContext} from "react";
+import {addDoc, collection} from "firebase/firestore";
+import {db} from "../../Firebase/Firebase";
+import {Context} from "../../Context/CartContext";
 
 export const BuyForm = () => {
+	const {cart} = useContext(Context);
 	const [buyerInfo, setBuyerInfo] = useState({
 		name: undefined,
 		phone: undefined,
 		email: undefined,
 	});
-
+	const test = () => {
+		const finishBuy = collection(db, "soldproducts");
+		addDoc(finishBuy, {buyerInfo, items: cart});
+	};
 	return (
 		<div className="formFinishBuy">
 			<p>Ingresa tu nombre:</p>
@@ -31,7 +38,7 @@ export const BuyForm = () => {
 				onWheel={(e) => e.target.blur()}
 				onChange={(e) => setBuyerInfo({...buyerInfo, phone: e.target.value})}
 			/>
-			<button onClick={() => console.log(buyerInfo)}>Finalizar</button>
+			<button onClick={test}>Finalizar</button>
 		</div>
 	);
 };
