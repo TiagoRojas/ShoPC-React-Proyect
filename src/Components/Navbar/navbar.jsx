@@ -24,6 +24,7 @@ const Navbar = () => {
 const styles = {
 	header: {
 		width: "100%",
+		height: "100px",
 		display: "flex",
 		justifyContent: "space-between",
 		alignItems: "center",

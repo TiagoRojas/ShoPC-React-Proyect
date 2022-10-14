@@ -18,6 +18,8 @@ header nav a {
 
 #root {
 	display: grid;
+	height: 100vh;
+	align-content: baseline;
 }
 .amountContainer {
 	display: flex;
@@ -87,4 +89,33 @@ header nav a {
 #loading-icon {
 	width: 50%;
 	margin: 0 auto;
+}
+
+#cartTitle {
+	margin: 0;
+	padding: 0;
+}
+.formFinishBuy {
+	background-color: #fff;
+	box-shadow: 2px 5px 11px 1px rgba(0, 0, 0, 0.56);
+	align-self: center;
+	justify-self: center;
+	position: absolute;
+	margin: auto;
+	border: 1px solid #a7a7a7;
+	border-radius: 10px;
+	padding: 200px 300px;
+}
+.formFinishBuy input {
+	display: block;
+	padding: 10px;
+	font-size: 20px;
+}
+.formFinishBuy input[type="number"] {
+	-moz-appearance: textfield;
+}
+
+.formFinishBuy input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
 }
