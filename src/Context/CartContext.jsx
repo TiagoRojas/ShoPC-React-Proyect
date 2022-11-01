@@ -20,10 +20,13 @@ const CartProvider = ({children}) => {
 	const removeAll = () => {
 		setCart([]);
 	};
+	const reset = () => {
+		setCart([]);
+	};
 	const totalPrice = () => {
 		return cart.reduce((acc, product) => (acc += product.product.price * product.quantity), 0);
 	};
 
-	return <Context.Provider value={{cart, addItem, removeItem, removeAll, totalPrice}}>{children}</Context.Provider>;
+	return <Context.Provider value={{cart, addItem, removeItem, removeAll, reset, totalPrice}}>{children}</Context.Provider>;
 };
 export default CartProvider;

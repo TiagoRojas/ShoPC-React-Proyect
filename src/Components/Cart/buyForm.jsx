@@ -6,7 +6,7 @@ import swal from 'sweetalert';
 import {Link} from 'react-router-dom';
 
 export const BuyForm = () => {
-	const {cart, totalPrice} = useContext(Context);
+	const {cart, totalPrice, reset} = useContext(Context);
 	const [buyerInfo, setBuyerInfo] = useState({
 		name: '',
 		phone: '',
@@ -19,6 +19,7 @@ export const BuyForm = () => {
 		addDoc(finishBuy, {buyerInfo, items: cart}).then((result) => {
 			swal(`Gracias por la compra!`, `tu ID es: ${result.id}`);
 		});
+		reset();
 	};
 	return (
 		<div className="formFinishBuy">
