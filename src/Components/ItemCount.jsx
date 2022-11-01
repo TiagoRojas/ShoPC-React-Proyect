@@ -1,5 +1,7 @@
-import {useState} from "react";
-import {Link} from "react-router-dom";
+import {useState} from 'react';
+import {Link} from 'react-router-dom';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
+import RemoveIcon from '@mui/icons-material/Remove';
 const ItemCount = ({initial, stock, addCart}) => {
 	const [count, setCount] = useState(initial);
 	const [canAdd, setCanAdd] = useState(true);
@@ -19,21 +21,17 @@ const ItemCount = ({initial, stock, addCart}) => {
 	return canAdd ? (
 		<>
 			<div className="amountContainer">
-				<button onClick={subOne} className="amountButton">
-					-
-				</button>
+				<RemoveIcon onClick={subOne} id="amountButton" />
 				<div className="amount">{count}</div>
-				<button onClick={addOne} className="amountButton">
-					+
-				</button>
-				<button onClick={addCartButton} className="submitButton">
+				<AddCircleIcon onClick={addOne} className="amountButton" />
+				<button onClick={addCartButton} id="submitButton">
 					Añadir al carrito
 				</button>
 			</div>
 		</>
 	) : (
-		<Link to={"/cart"}>
-			<button>Finalizar compra</button>
+		<Link to={'/cart'}>
+			<button id="goToCart">Finalizar compra</button>
 		</Link>
 	);
 };

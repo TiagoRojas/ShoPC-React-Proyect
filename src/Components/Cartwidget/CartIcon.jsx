@@ -1,6 +1,6 @@
-import {useContext, useEffect, useState} from "react";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import {Context} from "../../Context/CartContext";
+import {useContext, useEffect, useState} from 'react';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import {Context} from '../../Context/CartContext';
 
 const CartWidget = () => {
 	const {cart} = useContext(Context);
@@ -17,8 +17,8 @@ const CartWidget = () => {
 
 	return (
 		<div>
-			{cart.length ? <span>{itemsInCart}</span> : null}
-			<ShoppingCartIcon fontSize="large" />
+			{cart.length ? <span id="itemsInCart">{itemsInCart}</span> : null}
+			<ShoppingCartIcon fontSize="large" id="cartIcon" />
 		</div>
 	);
 };

@@ -1,44 +1,42 @@
-import {useState, useContext} from "react";
-import {addDoc, collection} from "firebase/firestore";
-import {db} from "../../Firebase/Firebase";
-import {Context} from "../../Context/CartContext";
+import {useState, useContext} from 'react';
+import {addDoc, collection, serverTimestamp} from 'firebase/firestore';
+import {db} from '../../Firebase/Firebase';
+import {Context} from '../../Context/CartContext';
+import swal from 'sweetalert';
+import {Link} from 'react-router-dom';
 
 export const BuyForm = () => {
-	const {cart} = useContext(Context);
+	const {cart, totalPrice} = useContext(Context);
 	const [buyerInfo, setBuyerInfo] = useState({
-		name: undefined,
-		phone: undefined,
-		email: undefined,
+		name: '',
+		phone: '',
+		email: '',
+		date: serverTimestamp(),
+		price: totalPrice()
 	});
-	const test = () => {
-		const finishBuy = collection(db, "soldproducts");
-		addDoc(finishBuy, {buyerInfo, items: cart});
+	const HandlerfinishBuy = () => {
+		const finishBuy = collection(db, 'soldproducts');
+		addDoc(finishBuy, {buyerInfo, items: cart}).then((result) => {
+			swal(`Gracias por la compra!`, `tu ID es: ${result.id}`);
+		});
 	};
 	return (
 		<div className="formFinishBuy">
+			<h2>Ingresa tus datos</h2>
 			<p>Ingresa tu nombre:</p>
-			<input
-				type="text"
-				id=""
-				placeholder="Indique su nombre aqui"
-				onChange={(e) => setBuyerInfo({...buyerInfo, name: e.target.value})}
-			/>
+			<input type="text" placeholder="Indique su nombre aqui" onChange={(e) => setBuyerInfo({...buyerInfo, name: e.target.value})} />
 			<p>Ingresa tu email:</p>
-			<input
-				type="email"
-				id=""
-				placeholder="Indique su email aqui"
-				onChange={(e) => setBuyerInfo({...buyerInfo, email: e.target.value})}
-			/>
+			<input type="email" placeholder="Indique su email aqui" onChange={(e) => setBuyerInfo({...buyerInfo, email: e.target.value})} />
 			<p>Ingresa tu numero de telefono:</p>
 			<input
 				type="number"
-				id=""
 				placeholder="Indique su numero de telefono aqui"
 				onWheel={(e) => e.target.blur()}
 				onChange={(e) => setBuyerInfo({...buyerInfo, phone: e.target.value})}
 			/>
-			<button onClick={test}>Finalizar</button>
+			<Link to={'/'} onClick={HandlerfinishBuy}>
+				Finalizar
+			</Link>
 		</div>
 	);
 };
