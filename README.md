@@ -4,7 +4,7 @@ Este proyecto esta dedicado para el Curso de React, para la pagina de [[https://
 
     Imagen del home:
 
-![ShoPC-Home](https://i.postimg.cc/3JhwhPZ7/image.png)
+![Sho-PC home picture](https://i.postimg.cc/3JhwhPZ7/image.png)
 
 ## Herramientas Utilizadas/Instaladas
 
@@ -16,7 +16,13 @@ Se utilizaron estas herramientas:
 - Styled-Components
 - Firebase
 
+Para poder hacer uso del proyecto, abrir en una consola de comandos en el directorio de la carpeta del proyecto, y colocar este comando:
+
 > npm install
+
+### Aclaración:
+
+Los estilos están todos colocados con sus respectivos id y clases, en el archivo **_index.css_**, por lo que si quiere modificar algo respecto a los diseños, tendrá que modificarlo desde el archivo mencionado anteriormente.
 
 ## Sobre mi
 
