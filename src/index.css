@@ -508,6 +508,16 @@ input::-webkit-inner-spin-button {
 	appearance: none;
 	-webkit-appearance: none;
 }
+#sendForm {
+	background-color: #252525;
+	display: inline-block;
+	color: #ffffff;
+	width: 70px;
+	text-align: center;
+	padding: 7px;
+	align-self: center;
+	margin-top: 10px;
+}
 @keyframes openForm {
 	from {
 		transform: scale(0);

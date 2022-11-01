@@ -34,7 +34,7 @@ export const BuyForm = () => {
 				onWheel={(e) => e.target.blur()}
 				onChange={(e) => setBuyerInfo({...buyerInfo, phone: e.target.value})}
 			/>
-			<Link to={'/'} onClick={HandlerfinishBuy}>
+			<Link to={'/'} id="sendForm" onClick={HandlerfinishBuy}>
 				Finalizar
 			</Link>
 		</div>
